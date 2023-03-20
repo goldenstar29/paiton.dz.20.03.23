@@ -1,0 +1,46 @@
+from random import randint
+
+
+def game():
+  listNumR = []
+  rand = randint(1000, 9999)
+  xr = rand // 1000
+  zr = (rand // 100) % 10
+  yr = (rand // 10) % 10
+  wr = rand % 10
+  listNumR.append(xr)
+  listNumR.append(zr)
+  listNumR.append(yr)
+  listNumR.append(wr)
+  while True:
+    number = int(input("Введите 4х значное число"))
+    listNum = []
+    x = number // 1000
+    z = (number // 100) % 10
+    y = (number // 10) % 10
+    w = number % 10
+    listNum.append(x)
+    listNum.append(z)
+    listNum.append(y)
+    listNum.append(w)
+    print(listNum)
+    a = 0
+    while a <= 3:
+      if listNum[a] == listNumR[a]:
+        print(a + 1, "цифра совпала и на своем месте")
+      a += 1
+    for i in listNumR:
+      if i in listNum:
+        print(i, "такая цифра есть")
+    if listNum == listNumR:
+      print("WIN")
+      print("еще разок?")
+      start = int(input("1 = да, 2 = нет"))
+      if start == 1:
+        game()
+      else:
+        break
+    
+
+print("Угадай число")
+game()
